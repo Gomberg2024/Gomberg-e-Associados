@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Usuário</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #0055a5;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #003d73;
+    }
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cadastrar Usuário</h1>
+    <form id="userForm">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="cpf">CPF:</label>
+      <input type="text" id="cpf" name="cpf" required>
+
+      <label for="endereco">Endereço:</label>
+      <input type="text" id="endereco" name="endereco" required>
+
+      <label for="telefone">Telefone:</label>
+      <input type="text" id="telefone" name="telefone" required>
+
+      <label for="caso">Conte seu caso resumido:</label>
+      <textarea id="caso" name="caso" rows="4" required></textarea>
+
+      <div class="button-group">
+        <button type="button" onclick="sendCase()">Enviar Caso</button>
+        <button type="button" onclick="goBack()">Voltar</button>
+      </div>
+    </form>
+  </div>
+  <script>
+    function sendCase() {
+      const nome = document.getElementById('nome').value;
+      const cpf = document.getElementById('cpf').value;
+      const endereco = document.getElementById('endereco').value;
+      const telefone = document.getElementById('telefone').value;
+      const caso = document.getElementById('caso').value;
+
+      if (nome && cpf && endereco && telefone && caso) {
+        // Simulação do envio para WhatsApp e email
+        const email = 'gombergeassociados@gmail.com';
+        const whatsapp = 'https://wa.me/11973383818?text=' + encodeURIComponent(
+          `Novo caso recebido:
+Nome: ${nome}
+CPF: ${cpf}
+Endereço: ${endereco}
+Telefone: ${telefone}
+Caso: ${caso}`
+        );
+
+        // Simular envio para o email
+        alert(`Caso enviado para o email: ${email}`);
+        // Abrir o WhatsApp com a mensagem pré-preenchida
+        window.open(whatsapp, '_blank');
+      } else {
+        alert('Por favor, preencha todos os campos antes de enviar.');
+      }
+    }
+
+    function goBack() {
+      window.location.href = 'index.html'; // Altere para a página inicial correta
+    }
+  </script>
+</body>
+</html>
