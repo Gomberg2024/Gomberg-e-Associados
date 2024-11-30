@@ -1,67 +1,326 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gomberg & Associados</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-      margin: 0;
-      padding: 0;
+- import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import LawCard from "@/components/LawCard";
+import LawCard from "@/components/LawCard";
+import StarRating from "@/components/StarRating";
+import StarRating from "@/components/StarRating";
+import PlansSection from "@/components/PlansSection";
+import PlansSection from "@/components/PlansSection";
+const Index = () => {
+const Index = () => {
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
+  const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [showRating, setShowRating] = useState(false);
+  const [showRating, setShowRating] = useState(false);
+  const testimonials = [
+    {
+      name: "Maria Silva",
+      case: "Direito de Família",
+      text: "O escritório me ajudou em um processo complexo de guarda compartilhada. Profissionalismo e dedicação excepcionais."
+    },
+    {
+      name: "João Santos",
+      case: "Direito Trabalhista",
+      text: "Conseguimos uma resolução favorável em minha causa trabalhista. Equipe muito competente e atenciosa."
+    },
+    {
+      name: "Ana Oliveira",
+      case: "Direito Criminal",
+      text: "Excelente condução do meu caso, com total suporte e esclarecimento em todas as etapas do processo."
     }
-    header {
-      background-color: #003366;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    h1, h2 {
-      margin: 0;
-    }
-    .container {
-      padding: 20px;
-    }
-    .button {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      background-color: #0055a5;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    .button:hover {
-      background-color: #003d73;
-    }
-    footer {
-      margin-top: 20px;
-      text-align: center;
-      background-color: #003366;
-      color: white;
-      padding: 10px;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Gomberg & Associados</h1>
-    <p>"Busque seus direitos, a justiça está ao seu alcance."</p>
-  </header>
-  <div class="container">
-    <h2>Consultoria Jurídica Especializada</h2>
-    <p>Encontre informações sobre as principais áreas do direito e conte com nossa expertise legal.</p>
-    <a href="/cadastro" class="button">Cadastrar Usuário</a>
-    <a href="/recuperar-senha" class="button">Esqueci minha senha</a>
-    <a href="/admin" class="button">Área do Administrador</a>
-    <a href="/historias" class="button">Histórias Ilustrativas</a>
-    <a href="/sobre" class="button">Sobre Nós</a>
-  </div>
-  <footer>
-    <p>Contato: <a href="mailto:gomberg2010@hotmail.com">gomberg2010@hotmail.com</a></p>
-    <p>WhatsApp: <a href="https://wa.me/11973383818">(11) 9.7338-3818</a></p>
-  </footer>
-</body>
-</html>
+  ];
+  return (
+  return (
+    <div className="min-h-screen bg-law-light dark:bg-law-dark-bg dark:text-law-dark-text">
+    <div className="min-h-screen bg-law-light dark:bg-law-dark-bg dark:text-law-dark-text">
+      <header className="bg-law-primary text-white py-16">
+      <header className="bg-law-primary text-white py-16">
+        <div className="container mx-auto text-center">
+        <div className="container mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 text-law-secondary animate-fade-in">
+          <h1 className="text-5xl md:text-6xl font-serif font-bold mb-8 text-law-secondary animate-fade-in">
+            Gomberg & Associados
+            Gomberg & Associados
+          </h1>
+          </h1>
+          <div className="max-w-2xl mx-auto mb-8">
+          <div className="max-w-2xl mx-auto mb-8">
+            <img 
+            <img 
+              src="/lovable-uploads/a925ab50-fc17-4996-a713-c1061915c3c1.png" 
+              src="/lovable-uploads/a925ab50-fc17-4996-a713-c1061915c3c1.png" 
+              alt="Símbolo da Justiça" 
+              alt="Símbolo da Justiça" 
+              className="w-48 h-48 mx-auto mb-4"
+              className="w-48 h-48 mx-auto mb-4"
+            />
+            />
+            <p className="text-xl text-law-secondary italic">
+            <p className="text-xl text-law-secondary italic">
+              "Busque seus direitos, a justiça está ao seu alcance."
+              "Busque seus direitos, a justiça está ao seu alcance."
+            </p>
+            </p>
+          </div>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">
+            Consultoria Jurídica Especializada
+            Consultoria Jurídica Especializada
+          </h2>
+          </h2>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            Encontre informações sobre as principais áreas do direito e conte com nossa expertise legal
+            Encontre informações sobre as principais áreas do direito e conte com nossa expertise legal
+          </p>
+          </p>
+          <div className="mt-6 space-x-4">
+          <div className="mt-6 space-x-4">
+            <Button onClick={() => navigate("/cadastro")} variant="secondary">
+            <Button onClick={() => navigate("/cadastro")} variant="secondary">
+              Cadastrar Usuário
+              Cadastrar Usuário
+            </Button>
+            </Button>
+            <Button onClick={() => navigate("/recuperar-senha")} variant="secondary">
+            <Button onClick={() => navigate("/recuperar-senha")} variant="secondary">
+              Esqueci minha senha
+              Esqueci minha senha
+            </Button>
+            </Button>
+            <Button variant="secondary" onClick={() => navigate("/admin")}>
+            <Button variant="secondary" onClick={() => navigate("/admin")}>
+              Área do Administrador
+              Área do Administrador
+            </Button>
+            </Button>
+            <Button variant="secondary" onClick={() => navigate("/historias")}>
+            <Button variant="secondary" onClick={() => navigate("/historias")}>
+              Histórias Ilustrativas
+              Histórias Ilustrativas
+            </Button>
+            </Button>
+            <Button variant="secondary" onClick={() => navigate("/sobre")}>
+            <Button variant="secondary" onClick={() => navigate("/sobre")}>
+              Sobre Nós
+              Sobre Nós
+            </Button>
+            </Button>
+          </div>
+          </div>
+          
+          
+          <PlansSection />
+          <PlansSection />
+          
+          
+        </div>
+        </div>
+      </header>
+      </header>
+      <main className="container mx-auto py-12">
+      <main className="container mx-auto py-12">
+        <Tabs defaultValue="familia" className="w-full mb-8">
+        <Tabs defaultValue="familia" className="w-full mb-8">
+          <TabsList className="w-full justify-start">
+          <TabsList className="w-full justify-start">
+            <TabsTrigger value="familia">Direito de Família</TabsTrigger>
+            <TabsTrigger value="familia">Direito de Família</TabsTrigger>
+            <TabsTrigger value="criminal">Direito Criminal</TabsTrigger>
+            <TabsTrigger value="criminal">Direito Criminal</TabsTrigger>
+            <TabsTrigger value="trabalho">Direito do Trabalho</TabsTrigger>
+            <TabsTrigger value="trabalho">Direito do Trabalho</TabsTrigger>
+            <TabsTrigger value="sobre">Sobre Nós</TabsTrigger>
+            <TabsTrigger value="sobre">Sobre Nós</TabsTrigger>
+          </TabsList>
+          </TabsList>
+          <TabsContent value="familia">
+          <TabsContent value="familia">
+            <LawCard
+            <LawCard
+              title="Direito de Família"
+              title="Direito de Família"
+              description="Especialização em divórcio, guarda de filhos, pensão alimentícia e outros assuntos familiares."
+              description="Especialização em divórcio, guarda de filhos, pensão alimentícia e outros assuntos familiares."
+              type="family"
+              type="family"
+            />
+            />
+          </TabsContent>
+          </TabsContent>
+          <TabsContent value="criminal">
+          <TabsContent value="criminal">
+            <LawCard
+            <LawCard
+              title="Direito Criminal"
+              title="Direito Criminal"
+              description="Defesa em processos criminais, investigações e representação legal em tribunal."
+              description="Defesa em processos criminais, investigações e representação legal em tribunal."
+              type="criminal"
+              type="criminal"
+            />
+            />
+          </TabsContent>
+          </TabsContent>
+          <TabsContent value="trabalho">
+          <TabsContent value="trabalho">
+            <LawCard
+            <LawCard
+              title="Direito do Trabalho"
+              title="Direito do Trabalho"
+              description="Assessoria especializada em questões trabalhistas, direitos do trabalhador e relações de trabalho."
+              description="Assessoria especializada em questões trabalhistas, direitos do trabalhador e relações de trabalho."
+              type="trabalho"
+              type="trabalho"
+            />
+            />
+          </TabsContent>
+          </TabsContent>
+          <TabsContent value="sobre">
+          <TabsContent value="sobre">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <h3 className="text-2xl font-serif font-bold mb-4">Sobre Nós</h3>
+              <h3 className="text-2xl font-serif font-bold mb-4">Sobre Nós</h3>
+              <p className="text-gray-700">
+              <p className="text-gray-700">
+                Somos especializados na matéria, temos expertise na área e atuamos no mercado a três anos.
+                Somos especializados na matéria, temos expertise na área e atuamos no mercado a três anos.
+              </p>
+              </p>
+            </div>
+            </div>
+          </TabsContent>
+          </TabsContent>
+        </Tabs>
+        </Tabs>
+        <div className="text-center mt-8 mb-8">
+        <div className="text-center mt-8 mb-8">
+          <Button
+          <Button
+            variant="outline"
+            variant="outline"
+            onClick={() => setShowRating(true)}
+            onClick={() => setShowRating(true)}
+            className="dark:text-law-dark-text"
+            className="dark:text-law-dark-text"
+          >
+          >
+            Avaliar Atendimento
+            Avaliar Atendimento
+          </Button>
+          </Button>
+          {showRating && (
+          {showRating && (
+            <div className="mt-4 flex flex-col items-center gap-2">
+            <div className="mt-4 flex flex-col items-center gap-2">
+              <p className="text-sm dark:text-law-dark-text">Como você avalia nosso atendimento?</p>
+              <p className="text-sm dark:text-law-dark-text">Como você avalia nosso atendimento?</p>
+              <StarRating onChange={(rating) => console.log("Rating:", rating)} />
+              <StarRating onChange={(rating) => console.log("Rating:", rating)} />
+            </div>
+            </div>
+          )}
+          )}
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 italic">
+          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 italic">
+            Obrigado por nos escolher! Ficamos felizes e garantimos que você sempre será bem atendido.
+            Obrigado por nos escolher! Ficamos felizes e garantimos que você sempre será bem atendido.
+          </p>
+          </p>
+        </div>
+        </div>
+        {/* Nova seção de Casos de Sucesso */}
+        <div className="my-16">
+          <h2 className="text-3xl font-serif font-bold mb-8 text-center">Casos de Sucesso</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={index} 
+                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+              >
+                <p className="text-gray-600 dark:text-gray-300 italic mb-4">"{testimonial.text}"</p>
+                <div className="border-t pt-4">
+                  <p className="font-semibold">{testimonial.name}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.case}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <footer className="mt-16 text-center border-t pt-8 dark:border-law-dark-accent">
+        <footer className="mt-16 text-center border-t pt-8 dark:border-law-dark-accent">
+          <h3 className="text-xl font-semibold mb-4">Entre em Contato</h3>
+          <h3 className="text-xl font-semibold mb-4">Entre em Contato</h3>
+          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-2">
+            <a href="https://wa.me/11973383818" className="text-gray-600 hover:text-law-secondary transition-colors">
+            <a href="https://wa.me/11973383818" className="text-gray-600 hover:text-law-secondary transition-colors">
+              Telefone/WhatsApp: (11) 9.7338-3818
+              Telefone/WhatsApp: (11) 9.7338-3818
+            </a>
+            </a>
+            <a href="mailto:gomberg2010@hotmail.com" className="text-gray-600 hover:text-law-secondary transition-colors">
+            <a href="mailto:gomberg2010@hotmail.com" className="text-gray-600 hover:text-law-secondary transition-colors">
+              Email: gomberg2010@hotmail.com
+              Email: gomberg2010@hotmail.com
+            </a>
+            </a>
+            <div className="flex gap-4 mt-2">
+            <div className="flex gap-4 mt-2">
+              <a 
+              <a 
+                href="https://x.com/lui8179" 
+                href="https://x.com/lui8179" 
+                target="_blank" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-law-secondary transition-colors"
+                className="text-gray-600 hover:text-law-secondary transition-colors"
+              >
+              >
+                Twitter/X
+                Twitter/X
+              </a>
+              </a>
+              <a 
+              <a 
+                href="https://www.facebook.com/profile.php?id=100085688431397" 
+                href="https://www.facebook.com/profile.php?id=100085688431397" 
+                target="_blank" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-law-secondary transition-colors"
+                className="text-gray-600 hover:text-law-secondary transition-colors"
+              >
+              >
+                Facebook
+                Facebook
+              </a>
+              </a>
+            </div>
+            </div>
+          </div>
+          </div>
+        </footer>
+        </footer>
+      </main>
+      </main>
+    </div>
+    </div>
+  );
+  );
+};
+};
+export default Index;
+export default Index;
