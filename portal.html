@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -38,12 +37,27 @@
       background-color: #003d73;
     }
   </style>
+  <script>
+    function handleAdminLogin() {
+      const username = prompt("Digite seu CPF:");
+      const password = prompt("Digite sua senha:");
+      if (username === "08457245848" && password === "Regina12@") {
+        alert("Logado com sucesso!");
+        window.location.href = "admin.html"; // Redireciona para a página do administrador
+      } else {
+        alert("Login ou senha incorretos!");
+      }
+    }
+  </script>
 </head>
 <body>
   <div class="container">
     <h1>Bem-vindo ao Portal Principal</h1>
     <a href="cadastrar_usuario.html" class="button">Cadastrar Usuário</a>
-    <a href="#" class="button" onclick="alert('Funcionalidade em desenvolvimento!')">Outros Recursos</a>
+    <a href="javascript:void(0);" class="button" onclick="handleAdminLogin()">Administrador</a>
+    <a href="#" class="button" onclick="alert('Funcionalidade em desenvolvimento!')">Planos Ouro</a>
+    <a href="#" class="button" onclick="alert('Funcionalidade em desenvolvimento!')">Planos Diamante</a>
+    <a href="#" class="button" onclick="alert('Funcionalidade em desenvolvimento!')">Planos Personalizado</a>
   </div>
 </body>
 </html>
