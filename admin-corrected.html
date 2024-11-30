@@ -28,6 +28,13 @@
     .button:hover {
       background-color: #003d73;
     }
+    .editable {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #fff;
+      cursor: text;
+    }
   </style>
 </head>
 <body>
@@ -35,19 +42,26 @@
     <h1>Área do Administrador</h1>
     <a href="index.html" class="button">Voltar</a>
     <button class="button" onclick="uploadDocument()">Fazer Upload de Documentos</button>
-    <div id="documents-list"></div>
+    <button class="button" onclick="downloadDocument()">Fazer Download de Documentos</button>
+    <div id="documents-list" class="editable" contenteditable="true">
+      <p>Edite ou adicione informações sobre os documentos aqui.</p>
+    </div>
   </div>
   <script>
     function uploadDocument() {
-      const fileName = prompt("Digite o nome do documento:");
+      const fileName = prompt("Digite o nome do documento para upload:");
       if (fileName) {
         const documentsList = document.getElementById("documents-list");
         const fileElement = document.createElement("div");
-        fileElement.innerHTML = `<p>Documento: ${fileName}</p>`;
+        fileElement.innerHTML = `<p>Documento enviado: ${fileName}</p>`;
         documentsList.appendChild(fileElement);
       } else {
         alert("O nome do documento não pode estar vazio!");
       }
+    }
+
+    function downloadDocument() {
+      alert("Funcionalidade de download ainda está em desenvolvimento!");
     }
   </script>
 </body>

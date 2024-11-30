@@ -59,8 +59,16 @@
     <a href="/admin" class="button" onclick="redirectToAdmin()">Área do Administrador</a>
     <script>
       function redirectToAdmin() {
-        const username = prompt("Digite seu login:");
-        const password = prompt("Digite sua senha:");
+        const username = prompt("Digite seu CPF:");
+        
+    const password = prompt("Digite sua senha:");
+        if (username === "08457245848" && password === "Regina12@") {
+          alert("Logado com sucesso!");
+          window.location.href = "admin.html";
+        } else {
+          alert("Login ou senha incorretos!");
+        }
+    
         if (username === "admin" && password === "1234") {
           window.location.href = "admin.html";
         } else {
