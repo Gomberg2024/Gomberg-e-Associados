@@ -1,0 +1,36 @@
+
+     <script>
+    function handleFileUpload(index) {
+        const uploadInput = document.getElementById(`doc-${index}-upload`);
+        const fileNameSpan = document.getElementById(`doc-${index}-file-name`);
+        const viewLink = document.getElementById(`doc-${index}-view`);
+        const downloadLink = document.getElementById(`doc-${index}-download`);
+
+        const file = uploadInput.files[0];
+        if (file) {
+            const fileURL = URL.createObjectURL(file); // Cria um URL temporário para o arquivo
+            fileNameSpan.textContent = file.name; // Atualiza o nome do arquivo exibido
+            viewLink.href = fileURL; // Define o link do botão Visualizar para o arquivo
+            viewLink.target = "_blank"; // Abre o link em uma nova aba
+            downloadLink.href = fileURL; // Define o link do botão Download para o arquivo
+            downloadLink.download = file.name; // Configura o nome do arquivo para download
+        } else {
+            fileNameSpan.textContent = "Nenhum arquivo escolhido"; // Reseta o nome caso não haja arquivo
+        }
+    }
+
+    function deleteFile(index) {
+        const fileNameSpan = document.getElementById(`doc-${index}-file-name`);
+        fileNameSpan.textContent = "Nenhum arquivo escolhido"; // Reseta o nome do arquivo
+
+        const viewLink = document.getElementById(`doc-${index}-view`);
+        const downloadLink = document.getElementById(`doc-${index}-download`);
+        viewLink.href = "#"; // Reseta o botão Visualizar
+        downloadLink.href = "#"; // Reseta o botão Download
+        downloadLink.removeAttribute("download");
+
+        const uploadInput = document.getElementById(`doc-${index}-upload`);
+        uploadInput.value = ""; // Limpa o campo de upload
+    }
+</script>
+  

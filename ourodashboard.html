@@ -1,0 +1,172 @@
+
+
+   
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Diamante</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #003366;
+            color: #ffd700;
+            padding: 10px;
+            text-align: center;
+        }
+        .benefits {
+            background-color: #003366; /* Fundo azul */
+            color: #ffd700; /* Texto dourado */
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            text-align: center; /* Centraliza o texto */
+            border-radius: 10px; /* Bordas arredondadas */
+        }
+        .benefits p {
+            margin: 10px 0;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            border: 1px solid #003366;
+            padding: 10px;
+            text-align: center;
+        }
+        table th {
+            background-color: #003366;
+            color: white;
+        }
+        .btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #ffd700; /* Cor ouro */
+            color: black; /* Texto preto */
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #e6c200; /* Ouro mais escuro ao passar o mouse */
+        }
+        .contact-info {
+            text-align: center; /* Centraliza o texto */
+            margin: 20px 0;
+        }
+        .contact-info p {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Gomberg & Associados</h1>
+        <h2>Seja bem vindo, seja bem vinda à nossa área do <span style="text-decoration: underline;">PLANO OURO</span></h2>
+    </div>
+
+    <!-- Quadro adicional com os benefícios -->
+    <div class="benefits">
+        <h3>Estes são os benefícios de sua Área Ouro</h3>
+	<p>Relatórios mensais</p>   
+	<p>Notificações sobre movimentações importantes quando houver</p>       
+	<p>Atendimentos quinzenais via Teams/Whatsapp</p>
+        <p>Plantão 24 Horas para casos urgentes</p>
+        <p>Atendimento presencial mensal</p>
+    </div>
+
+    <!-- Conteúdo existente abaixo continua intacto -->
+    <table>
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Ação</th>
+                <th>Upload</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Gerar linhas dinamicamente -->
+            <script>
+                const documents = [
+                    "RG/CNH", "COMPR. RES", "CTPS", "EXTRATO",
+                    "EXTRATO", "EXTRATO", "HOLERITE", "HOLERITE",
+                    "HOLERITE", "CERT. NASC.", "CERT.CASAM.", "CONTRATO", "OUTRO DOC", "OUTRO DOC"
+                ];
+
+                // Adicionar linhas dinamicamente para cada documento
+                documents.forEach((doc, index) => {
+                    document.write(`
+                        <tr>
+                            <td>${doc}</td>
+                            <td>
+                                <a id="doc-${index}-view" href="#" target="_blank">Visualizar</a> |
+                                <a id="doc-${index}-download" href="#" download>Download</a>
+                            </td>
+                            <td>
+                                <input type="file" id="doc-${index}-upload" onchange="handleFileUpload(${index})">
+                                <span id="doc-${index}-file-name">Nenhum arquivo escolhido</span>
+                            </td>
+                            <td>
+                                <button onclick="deleteFile(${index})">Excluir</button>
+                            </td>
+                        </tr>
+                    `);
+                });
+            </script>
+        </tbody>
+    </table>
+
+    <div class="contact-info">
+        <p>Precisando, pode nos chamar pelo <span style="color: black;">WHATSAPP</span> ou nos mandar mensagem pelo <span style="color: black;">E-MAIL</span>:</p>
+        <p>WHATSAPP: (11) 9.7338-3818</p>
+        <a href="https://wa.me/5511973383818" class="btn">WhatsApp</a>
+        <p>E-MAIL: gombergeassociados@gmail.com</p>
+        <a href="mailto:gombergeassociados@gmail.com" class="btn">E-Mail</a>
+    </div>
+
+    <script>
+        function handleFileUpload(index) {
+            const uploadInput = document.getElementById(`doc-${index}-upload`);
+            const fileNameSpan = document.getElementById(`doc-${index}-file-name`);
+            const viewLink = document.getElementById(`doc-${index}-view`);
+            const downloadLink = document.getElementById(`doc-${index}-download`);
+
+            const file = uploadInput.files[0];
+            if (file) {
+                const fileURL = URL.createObjectURL(file); // Cria um URL temporário para o arquivo
+                fileNameSpan.textContent = file.name; // Atualiza o nome do arquivo exibido
+                viewLink.href = fileURL; // Define o link do botão Visualizar para o arquivo
+                viewLink.target = "_blank"; // Abre o link em uma nova aba
+                downloadLink.href = fileURL; // Define o link do botão Download para o arquivo
+                downloadLink.download = file.name; // Configura o nome do arquivo para download
+            }
+        }
+
+        function deleteFile(index) {
+            const fileNameSpan = document.getElementById(`doc-${index}-file-name`);
+            fileNameSpan.textContent = "Nenhum arquivo escolhido"; // Reseta o nome do arquivo
+
+            const viewLink = document.getElementById(`doc-${index}-view`);
+            const downloadLink = document.getElementById(`doc-${index}-download`);
+            viewLink.href = "#"; // Reseta o botão Visualizar
+            downloadLink.href = "#"; // Reseta o botão Download
+            downloadLink.removeAttribute("download");
+
+            const uploadInput = document.getElementById(`doc-${index}-upload`);
+            uploadInput.value = ""; // Limpa o campo de upload
+        }
+    </script>
+</body>
+</html>

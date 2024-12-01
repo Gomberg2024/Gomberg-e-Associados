@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área Cliente - Diamante</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1e90ff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            color: #1e90ff;
+            margin-bottom: 10px;
+        }
+        p {
+            margin: 5px 0;
+        }
+        button {
+            display: inline-block;
+            margin: 10px 5px;
+            padding: 10px 15px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1c86ee;
+        }
+        .button-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Área Cliente - Diamante</h1>
+    </header>
+    <div class="container">
+        <h2>Bem-vindo, [Nome do Cliente]</h2>
+        <p><strong>CPF:</strong> 08457245848</p>
+        <p><strong>Telefone:</strong> [Telefone do Cliente]</p>
+        <p><strong>Endereço:</strong> [Endereço do Cliente]</p>
+        <p><strong>Email:</strong> [Email do Cliente]</p>
+        
+        <div class="button-group">
+            <button onclick="uploadDocument()">Upload de Documentos</button>
+            <button onclick="downloadDocument()">Download de Documentos</button>
+            <button onclick="returnToMain()">Voltar</button>
+            <button onclick="logout()">Sair</button>
+        </div>
+    </div>
+
+    <script>
+        // Função para retornar à tela inicial
+        function returnToMain() {
+            window.location.href = 'pagprincipal.html';
+        }
+
+        // Função para sair da área do cliente
+        function logout() {
+            alert('Você saiu com sucesso!');
+            window.location.href = 'pagprincipal.html';
+        }
+
+        // Função de upload de documentos
+        function uploadDocument() {
+            alert('Abrir tela para upload de documentos');
+        }
+
+        // Função de download de documentos
+        function downloadDocument() {
+            alert('Baixando documentos...');
+        }
+    </script>
+</body>
+</html>

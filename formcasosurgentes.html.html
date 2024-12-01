@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casos Urgentes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Casos Urgentes</h1>
+    <form id="casosUrgentesForm">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}" placeholder="Ex: 11-98765-4321" required>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" pattern="\d{11}" placeholder="Digite seu CPF (somente números)" required>
+
+        <label for="mensagem">Conte seu caso:</label>
+        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+
+        <button type="submit">Enviar Caso Urgente</button>
+        <button type="button" onclick="window.location.href='pagprincipal.html'">Voltar à Tela Inicial</button>
+    </form>
+
+    <script>
+        document.getElementById("casosUrgentesForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const nome = document.getElementById("nome").value;
+            const telefone = document.getElementById("telefone").value;
+            const cpf = document.getElementById("cpf").value;
+            const mensagem = document.getElementById("mensagem").value;
+
+            // Função para enviar email (substitua pelos detalhes do backend)
+            const emailContent = `
+                Nome: ${nome}
+                Telefone: ${telefone}
+                CPF: ${cpf}
+                Caso: ${mensagem}
+            `;
+
+            window.location.href = `mailto:gombergeassociados@gmail.com?subject=Novo Caso Urgente&body=${encodeURIComponent(emailContent)}`;
+        });
+    </script>
+</body>
+</html>
+

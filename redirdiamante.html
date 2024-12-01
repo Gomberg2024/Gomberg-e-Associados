@@ -1,0 +1,25 @@
+
+<form onsubmit="handleLogin(event)">
+    <label for="cpf">CPF</label>
+    <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" required>
+    
+    <label for="password">Senha</label>
+    <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+    
+    <button type="submit">Entrar</button>
+</form>
+
+<script>
+    function handleLogin(event) {
+        event.preventDefault(); // Impede o envio do formulário padrão
+        const cpf = document.getElementById('cpf').value;
+        const password = document.getElementById('password').value;
+
+        if (cpf === '08457245848' && password === 'Regina12@') {
+            // Redireciona para a área do cliente após login bem-sucedido
+            window.location.href = 'diamante_area_cliente.html';
+        } else {
+            alert('CPF ou senha incorretos!');
+        }
+    }
+</script>
